@@ -1,0 +1,75 @@
+<head>
+	<title>Team Todo List</title>
+</head>
+<body>
+	<br />
+	<br />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3">
+				<h3>Team todo list</h3>
+				<br />
+				{{> taskList}}
+				{{#if currentUser}}
+					{{> addTask}}
+				{{else}}
+					{{> login}}
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</body>
+
+<template name="taskList">
+	<ul class="list-group">
+		{{#each tasks}}
+			{{> task}}
+		{{/each}}
+	</ul>
+</template>
+
+<template name="task">
+	<li class="list-group-item">
+		<div class="row">
+			<div class="col-sm-4">
+				{{name}}
+			</div>
+			<div class="col-sm-4">
+				{{description}}
+			</div>
+			<div class="col-sm-2">
+				{{#if done}}
+					<i class="fa fa-check pull-right"></i>
+				{{else}}
+					{{#if ownsTask}}
+						<button type="button" id="done" class="btn btn-xs btn-default pull-right">Done</button>
+					{{/if}}
+				{{/if}}
+			</div>
+			<div class="col-sm-2">
+				{{#if ownsTask}}
+					<button type="button" id="delete" class="btn btn-xs btn-default pull-right">Delete</button>
+				{{/if}}
+			</div>
+		</div>
+	</li>
+</template>
+
+<template name="addTask">
+	<div class="input-group">
+		<input type="text" class="form-control" />
+		<span class="input-group-btn">
+			<button class="btn btn-default" type="button">Add</button>
+		</span>
+	</div>
+</template>
+
+<template name="login">
+	{{#if githubConfigured}}
+		<a class="btn btn-block btn-social btn-github">
+			<i class="fa fa-github"></i> Sign in with Github to add a task
+		</a>
+	{{else}}
+		{{> loginButtons}}
+	{{/if}}
+</template>

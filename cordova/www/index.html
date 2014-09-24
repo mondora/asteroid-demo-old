@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="asteroid-todo">
+
+	<head>
+
+		<title>Team Todo List</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8">
+
+		<!-- Vendor CSS -->
+		<link href="bower_components/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet" />
+		<link href="bower_components/bootstrap-social/bootstrap-social.css" type="text/css" rel="stylesheet" />
+		<link href="bower_components/font-awesome/css/font-awesome.css" type="text/css" rel="stylesheet" />
+
+		<!-- Vendor JS -->
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/ddp.js/src/ddp.js"></script>
+		<script src="bower_components/q/q.js"></script>
+		<script src="bower_components/asteroid/dist/asteroid.cordova.js"></script>
+		<script src="bower_components/asteroid/dist/plugins/github-login.js"></script>
+		<script src="cordova.js"></script>
+
+		<!-- App JS -->
+		<script src="index.js"></script>
+
+	</head>
+
+	<body ng-controller="MainController">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<h3>Team todo list</h3>
+					<br />
+					<ul class="list-group">
+						<li class="list-group-item" ng-repeat="task in tasks">
+							<div class="row">
+								<div class="col-xs-4">
+									{{task.name}}
+								</div>
+								<div class="col-xs-4">
+									{{task.description}}
+								</div>
+								<div class="col-xs-2">
+									<i class="fa fa-check pull-right" ng-if="isDone(task.status)"></i>
+									<button type="button" id="done" class="btn btn-xs btn-default pull-right" ng-if="ownsTask(task.userId) && !isDone(task.status)" ng-click="done($index)">Done</button>
+								</div>
+								<div class="col-xs-2">
+									<button type="button" id="delete" ng-if="ownsTask(task.userId)" class="btn btn-xs btn-default pull-right" ng-click="delete($index)">Delete</button>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div ng-show="loggedIn">
+						<div class="input-group">
+							<input type="text" class="form-control" ng-model="description" />
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button" ng-click="add()">Add</button>
+							</span>
+						</div>
+					</div>
+					<div ng-show="!loggedIn">
+						<a class="btn btn-block btn-social btn-github" ng-click="login()">
+							<i class="fa fa-github"></i> Sign in with Github to add a task
+						</a>
+					</div>
+					<br />
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>

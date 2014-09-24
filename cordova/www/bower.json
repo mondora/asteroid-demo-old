@@ -1,0 +1,21 @@
+{
+  "name": "asteroid-todo",
+  "version": "1.0.0",
+  "authors": [
+    "Paolo Scanferla <paolo.scanferla@mondora.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "asteroid": "~0.5.2",
+    "bootstrap-social": "~4.7.0",
+    "angular": "1.3.0-rc.2"
+  }
+}
