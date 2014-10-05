@@ -9,32 +9,33 @@
 
 		<!-- Vendor CSS -->
 		<link href="bower_components/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet" />
-		<link href="bower_components/bootstrap-social/bootstrap-social.css" type="text/css" rel="stylesheet" />
 		<link href="bower_components/font-awesome/css/font-awesome.css" type="text/css" rel="stylesheet" />
 
 		<!-- Vendor JS -->
 		<script src="bower_components/react/react.js"></script>
 		<script src="bower_components/react/JSXTransformer.js"></script>
-		<script src="bower_components/ddp.js/src/ddp.js"></script>
-		<script src="bower_components/q/q.js"></script>
-		<script src="bower_components/asteroid/dist/asteroid.browser.js"></script>
-		<script src="bower_components/asteroid/dist/plugins/github-login.js"></script>
-
-	</head>
-
-	<body>
-
-		<br />
-		<br />
-		<div class="container">
-			<div class="row">
-				<div id="tasks-box"></div>
-			</div>
-		</div>
 
 		<!-- App JSX -->
 		<script type="text/jsx" src="index.jsx"></script>
 
+		<!-- App CSS -->
+		<style>
+			i {
+				cursor: pointer;
+				-moz-user-select: -moz-none;
+				-khtml-user-select: none;
+				-webkit-user-select: none;
+				-o-user-select: none;
+				user-select: none;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="row" id="app-container"></div>
+		</div>
 	</body>
 
 </html>
