@@ -37,6 +37,18 @@ Template.task.helpers({
 });
 
 Template.addTask.events({
+	"keyup input": function (event) {
+		if (event.keyCode !== 13) {
+			return;
+		}
+		var task = {};
+		task.userId = Meteor.userId();
+		task.name = Meteor.user().profile.name;
+		task.description = $("input").val();
+		task.status = "todo";
+		Tasks.insert(task);
+		$("input").val("");
+	},
 	"click button": function () {
 		var task = {};
 		task.userId = Meteor.userId();
